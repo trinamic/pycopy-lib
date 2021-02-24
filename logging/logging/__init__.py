@@ -84,6 +84,10 @@ class Logger:
             self.handlers = []
         self.handlers.append(hdlr)
 
+    def removeHandler(self, hdlr):
+        if(self.handlers is not None):
+            self.handlers.remove(hdlr)
+
 
 def getLogger(name=None):
     if name is None:
@@ -146,7 +150,8 @@ class StreamHandler(Handler):
         self.flush()
 
     def flush(self):
-        self._stream.flush()
+        #self._stream.flush()
+        pass
 
 
 class FileHandler(StreamHandler):
@@ -251,7 +256,7 @@ class LogRecord:
 
 root = Logger("root")
 root.setLevel(WARNING)
-sh = StreamHandler()
-sh.formatter = Formatter()
-root.addHandler(sh)
+#sh = StreamHandler()
+#sh.formatter = Formatter()
+#root.addHandler(sh)
 _loggers = {"root": root}
